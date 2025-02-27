@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Processos</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Meus Processos</h1>
+
+        <h2>Processos em Aberto</h2>
+        <ul>
+            <% processos.forEach(function(processo) { %>
+                <% if (!processo.cumprido) { %>
+                    <li>
+                        <%= processo.numero_processos %> - <%= processo.classe_principal %>
+                        <button class="btn btn-success btn-sm">Marcar como Cumprido</button>
+                    </li>
+                <% } %>
+            <% }); %>
+        </ul>
+
+        <h2>Processos Cumpridos</h2>
+        <ul>
+            <% processos.forEach(function(processo) { %>
+                <% if (processo.cumprido) { %>
+                    <li><%= processo.numero_processos %> - <%= processo.classe_principal %></li>
+                <% } %>
+            <% }); %>
+        </ul>
+    </div>
+</body>
+</html>

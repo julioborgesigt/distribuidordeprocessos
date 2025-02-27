@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração de Processos</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Administração de Processos</h1>
+
+        <!-- Upload de CSV -->
+        <form action="/importar" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="arquivo">Atualizar Lista de Processos</label>
+                <input type="file" class="form-control" id="arquivo" name="arquivo" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Atualizar Lista</button>
+        </form>
+
+        <!-- Tabela de Processos -->
+        <h2 class="mt-5">Tabela Geral Atualizada</h2>
+        <table class="table table-striped mt-4">
+            <thead>
+                <tr>
+                    <th>Número do Processo</th>
+                    <th>Prazo Processual</th>
+                    <th>Classe Principal</th>
+                    <th>Assunto Principal</th>
+                    <th>Tarjas</th>
+                    <th>Data da Intimação</th>
+                    <th>Usuário</th>
+                    <th>Dias Restantes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% processos.forEach(function(processo) { %>
+                    <tr>
+                        <td><%= processo.numero_processos %></td>
+                        <td><%= processo.prazo_processual %></td>
+                        <td><%= processo.classe_principal %></td>
+                        <td><%= processo.assunto_principal %></td>
+                        <td><%= processo.tarjas %></td>
+                        <td><%= processo.data_intimacao %></td>
+                        <td><%= processo.usuario_id ? processo.usuario_id : 'Nenhum' %></td>
+                        <td><%= processo.dias_restantes %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

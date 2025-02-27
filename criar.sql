@@ -1,6 +1,6 @@
-CREATE DATABASE gerenciamento_processos;
 
-USE gerenciamento_processos;
+
+USE distribuidordeprocessos_distribuidor;
 
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
